@@ -9,10 +9,19 @@ public class Gun : MonoBehaviour {
 	public float fireRate;
 	public int damage;
 	public GameObject muzzleEffect;
-	public GameObject impactEffect;
+	public GameObject impactWallEffect;
+	public GameObject impactEnemyEffect;
+	public AudioClip fireSound;
 
+	private AudioSource audioSource;
 	private float tickRate;
 	private bool state;
+
+	private void Start()
+	{
+		audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.clip = fireSound;
+	}
 
 	public void SetFireState(bool state)
 	{
@@ -43,14 +52,17 @@ public class Gun : MonoBehaviour {
 			Enemy enemy = hit.collider.GetComponentInParent<Enemy>();
 			if (enemy != null)
 			{
+				SpawnEffect(impactEnemyEffect, hit.point, Quaternion.LookRotation(hit.normal), 1f);
 				enemy.ApplyDamage(damage);
 			}
 			else
 			{
-				SpawnEffect(impactEffect, hit.point, Quaternion.LookRotation(hit.normal), 1f);
+				SpawnEffect(impactWallEffect, hit.point, Quaternion.LookRotation(hit.normal), 1f);
 			}
 
 		}
+
+		audioSource.PlayOneShot(fireSound);
 	}
 
 	private void SpawnEffect(GameObject prefab, Vector3 position, Quaternion rotation, float destroyTime)

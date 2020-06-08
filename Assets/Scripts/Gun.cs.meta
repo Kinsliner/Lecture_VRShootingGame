@@ -8,7 +8,9 @@ MonoImporter:
   defaultReferences:
   - shootPoint: {instanceID: 0}
   - muzzleEffect: {fileID: 100006, guid: 7e9c50938e32351438a7df9ccad2f2a5, type: 2}
-  - impactEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 2}
+  - impactWallEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 2}
+  - impactEnemyEffect: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 2}
+  - fireSound: {fileID: 8300000, guid: 7c406f47af3a3bf41b2a5f00154794d3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
