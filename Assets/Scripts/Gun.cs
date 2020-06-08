@@ -6,23 +6,31 @@ public class Gun : MonoBehaviour {
 
 	public Transform shootPoint;
 	public float distance;
+	public float fireRate;
 	public int damage;
 	public GameObject muzzleEffect;
 	public GameObject impactEffect;
 
-	// Use this for initialization
-	void Start () {
-		
+	private float tickRate;
+	private bool state;
+
+	public void SetFireState(bool state)
+	{
+		this.state = state;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
-		if(Input.GetMouseButtonDown(0))
+
+		if (tickRate <= 0 && state)
 		{
+			tickRate = fireRate;
 			Fire();
 		}
-
+		else
+		{
+			tickRate -= Time.deltaTime;
+		}
 	}
 
 	private void Fire()
