@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public int hp = 100;
+	public int hp = 300;
 
 	private int currentHp;
+
+	private void Start()
+	{
+		currentHp = hp;
+	}
 
 	public void ApplyDamage(int damage)
 	{
